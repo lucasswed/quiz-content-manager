@@ -111,8 +111,47 @@ npm start
 npx prisma studio
 ```
 
+## Deploy to Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/lucasswed/quiz-content-manager&env=DATABASE_URL&envDescription=PostgreSQL%20connection%20string&envLink=https://neon.tech)
+
+### Deployment Steps
+
+1. **Click the "Deploy" button above** or run:
+   ```bash
+   npm install -g vercel
+   vercel
+   ```
+
+2. **Set Environment Variables** in Vercel Dashboard:
+   - Go to your project settings
+   - Add `DATABASE_URL` with your PostgreSQL connection string
+   - Example (Neon): `postgresql://user:password@ep-xxx.neon.tech/dbname?sslmode=require`
+
+3. **Run Database Migrations** after first deployment:
+   ```bash
+   vercel env pull .env.local
+   npx prisma migrate deploy
+   ```
+
+4. **Redeploy** to apply migrations:
+   ```bash
+   vercel --prod
+   ```
+
+### Environment Variables Required
+
+- `DATABASE_URL` - PostgreSQL connection string (must include `sslmode=require` for production databases)
+
+### Recommended Database Providers
+
+- **Neon** (https://neon.tech) - Serverless PostgreSQL, free tier available
+- **Supabase** (https://supabase.com) - Free tier with PostgreSQL
+- **Railway** (https://railway.app) - Free tier for hobby projects
+
 ## Learn More
 
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Prisma Documentation](https://www.prisma.io/docs)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+- [Vercel Deployment](https://vercel.com/docs)
