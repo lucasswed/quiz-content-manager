@@ -110,17 +110,15 @@ The `vercel.json` file in the project root contains:
 {
   "buildCommand": "prisma generate && next build",
   "installCommand": "npm install",
-  "framework": "nextjs",
-  "env": {
-    "DATABASE_URL": "@database_url"
-  }
+  "framework": "nextjs"
 }
 ```
 
 This ensures:
 - Prisma client is generated before build
-- Environment variables are properly injected
 - Next.js is recognized as the framework
+
+Environment variables like `DATABASE_URL` should be set directly in the Vercel dashboard or via the CLI (see Step 4 above).
 
 ## Troubleshooting
 
