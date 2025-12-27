@@ -40,14 +40,16 @@ npm install
 
 3. Set up your database:
 
+**Option A: Use Prisma's local development database (recommended for quick start):**
+```bash
+npx prisma dev
+```
+This will start a local PostgreSQL instance. Copy the `DATABASE_URL` connection string it provides into your `.env` file.
+
+**Option B: Use your own PostgreSQL database:**
 Update the `DATABASE_URL` in your `.env` file with your PostgreSQL connection string:
 ```env
 DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?schema=public"
-```
-
-Or use Prisma's local development database:
-```bash
-npx prisma dev
 ```
 
 4. Run database migrations:
