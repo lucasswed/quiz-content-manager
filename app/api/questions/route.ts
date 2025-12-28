@@ -1,12 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
+    const searchParams = request.nextUrl.searchParams;
+    const limit = searchParams.get('limit');
+    
     const questions = await prisma.question.findMany({
       orderBy: {
         createdAt: 'desc'
-      }
+      },
+      ...(limit && { take: parseInt(limit) })
     });
     return NextResponse.json(questions);
   } catch (error) {
