@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { Question } from '@/components/QuestionManager';
-import Link from 'next/link';
 
 interface Stats {
   total: number;
@@ -82,17 +81,9 @@ export default function StatsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-8 transition-colors">
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white">
-            Questions Statistics
-          </h1>
-          <Link
-            href="/"
-            className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 dark:bg-gray-500 dark:hover:bg-gray-600 transition-colors shadow-sm text-sm font-medium"
-          >
-            ← Back to Home
-          </Link>
-        </div>
+        <h1 className="text-4xl font-bold mb-8 text-gray-900 dark:text-white">
+          Questions Statistics
+        </h1>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
