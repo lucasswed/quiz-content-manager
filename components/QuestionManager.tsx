@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import QuestionForm from './QuestionForm';
 import QuestionTable from './QuestionTable';
 import EditModal from './EditModal';
@@ -103,12 +104,12 @@ export default function QuestionManager() {
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transition-colors border border-gray-200 dark:border-gray-700">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">Latest Questions (5)</h2>
-          <a
+          <Link
             href="/stats"
             className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-colors shadow-sm text-sm font-medium"
           >
             View All & Stats
-          </a>
+          </Link>
         </div>
         {loading ? (
           <p className="text-gray-700 dark:text-gray-300">Loading questions...</p>

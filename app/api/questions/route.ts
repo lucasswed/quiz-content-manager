@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
+const MAX_LIMIT = 1000;
+
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
@@ -9,7 +11,7 @@ export async function GET(request: NextRequest) {
     let limit: number | undefined;
     if (limitParam) {
       const parsedLimit = parseInt(limitParam, 10);
-      if (!isNaN(parsedLimit) && parsedLimit > 0 && parsedLimit <= 1000) {
+      if (!isNaN(parsedLimit) && parsedLimit > 0 && parsedLimit <= MAX_LIMIT) {
         limit = parsedLimit;
       }
     }
