@@ -64,21 +64,16 @@ Example connection string for Neon:
 postgresql://user:password@ep-dawn-sky-xxx.neon.tech/dbname?sslmode=require&channel_binding=require
 ```
 
-### Step 5: Run Database Migrations
-
-```bash
-# Pull environment variables locally
-vercel env pull .env.local
-
-# Run migrations against production database
-npx prisma migrate deploy
-```
-
-### Step 6: Redeploy
+### Step 5: Redeploy to Apply Configuration
 
 ```bash
 vercel --prod
 ```
+
+This will:
+- Trigger a new build with the DATABASE_URL environment variable
+- Automatically run database migrations via the `vercel-build` script
+- Deploy your application with the database fully set up
 
 ## Setting Up Your Database (Neon)
 
@@ -104,21 +99,22 @@ neonctl connection-string
 
 ## Vercel Project Configuration
 
-The `vercel.json` file in the project root contains:
+The project uses standard Next.js deployment with automatic Prisma migrations:
 
+**package.json scripts:**
 ```json
 {
-  "buildCommand": "prisma generate && next build",
-  "installCommand": "npm install",
-  "framework": "nextjs"
+  "postinstall": "prisma generate",
+  "vercel-build": "prisma migrate deploy && next build"
 }
 ```
 
 This ensures:
-- Prisma client is generated before build
-- Next.js is recognized as the framework
+- Prisma client is automatically generated after `npm install`
+- Database migrations are applied before building on Vercel
+- Next.js is recognized as the framework via `vercel.json`
 
-Environment variables like `DATABASE_URL` should be set directly in the Vercel dashboard or via the CLI (see Step 4 above).
+Environment variables like `DATABASE_URL` should be set directly in the Vercel dashboard or via the CLI.
 
 ## Troubleshooting
 
@@ -135,12 +131,23 @@ Environment variables like `DATABASE_URL` should be set directly in the Vercel d
 2. Check that your database allows connections from Vercel's IP addresses
 3. For Neon, ensure connection pooling is enabled
 
+### Error: "The table public.Question does not exist"
+
+This error occurs when migrations haven't been applied to the database.
+
+**Solution:**
+1. Ensure `DATABASE_URL` is set in Vercel environment variables (Project Settings → Environment Variables)
+2. Trigger a new deployment after setting the environment variable
+3. Check build logs to confirm `prisma migrate deploy` ran successfully
+4. The `vercel-build` script automatically applies migrations during deployment
+
 ### API Routes Return 500 Error
 
 **Solutions:**
-1. Check Vercel Function Logs in the dashboard
-2. Verify database migrations are applied: `npx prisma migrate deploy`
-3. Ensure environment variables are set for the Production environment
+1. Check Vercel Function Logs in the dashboard for detailed error messages
+2. Verify `DATABASE_URL` is set correctly in environment variables
+3. Ensure migrations were applied during build (check build logs for `prisma migrate deploy`)
+4. If migrations failed during build, redeploy after fixing the DATABASE_URL
 
 ## Monitoring and Logs
 

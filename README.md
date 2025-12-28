@@ -128,16 +128,10 @@ npx prisma studio
    - Add `DATABASE_URL` with your PostgreSQL connection string
    - Example (Neon): `postgresql://user:password@ep-xxx.neon.tech/dbname?sslmode=require`
 
-3. **Run Database Migrations** after first deployment:
-   ```bash
-   vercel env pull .env.local
-   npx prisma migrate deploy
-   ```
-
-4. **Redeploy** to apply migrations:
-   ```bash
-   vercel --prod
-   ```
+3. **Deploy!** 
+   - Database migrations will run automatically during the build process
+   - The `vercel-build` script handles both migrations and building the app
+   - No manual migration step is required!
 
 ### Environment Variables Required
 
