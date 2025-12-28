@@ -76,7 +76,7 @@ export default function QuestionForm({ onQuestionCreated }: QuestionFormProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="question" className="block text-sm font-medium text-black dark:text-white mb-1">
+        <label htmlFor="question" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
           Question
         </label>
         <textarea
@@ -86,14 +86,14 @@ export default function QuestionForm({ onQuestionCreated }: QuestionFormProps) {
           onChange={handleChange}
           required
           rows={3}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 dark:bg-gray-700 dark:text-white transition-colors"
           placeholder="Enter the question"
         />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="optionA" className="block text-sm font-medium text-black dark:text-white mb-1">
+          <label htmlFor="optionA" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Option A
           </label>
           <input
@@ -103,13 +103,13 @@ export default function QuestionForm({ onQuestionCreated }: QuestionFormProps) {
             value={formData.optionA}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 dark:bg-gray-700 dark:text-white transition-colors"
             placeholder="Option A"
           />
         </div>
 
         <div>
-          <label htmlFor="optionB" className="block text-sm font-medium text-black dark:text-white mb-1">
+          <label htmlFor="optionB" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Option B
           </label>
           <input
@@ -119,13 +119,13 @@ export default function QuestionForm({ onQuestionCreated }: QuestionFormProps) {
             value={formData.optionB}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 dark:bg-gray-700 dark:text-white transition-colors"
             placeholder="Option B"
           />
         </div>
 
         <div>
-          <label htmlFor="optionC" className="block text-sm font-medium text-black dark:text-white mb-1">
+          <label htmlFor="optionC" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Option C
           </label>
           <input
@@ -135,13 +135,13 @@ export default function QuestionForm({ onQuestionCreated }: QuestionFormProps) {
             value={formData.optionC}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 dark:bg-gray-700 dark:text-white transition-colors"
             placeholder="Option C"
           />
         </div>
 
         <div>
-          <label htmlFor="optionD" className="block text-sm font-medium text-black dark:text-white mb-1">
+          <label htmlFor="optionD" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Option D
           </label>
           <input
@@ -151,7 +151,7 @@ export default function QuestionForm({ onQuestionCreated }: QuestionFormProps) {
             value={formData.optionD}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 dark:bg-gray-700 dark:text-white transition-colors"
             placeholder="Option D"
           />
         </div>
@@ -159,7 +159,7 @@ export default function QuestionForm({ onQuestionCreated }: QuestionFormProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="correctAnswer" className="block text-sm font-medium text-black dark:text-white mb-1">
+          <label htmlFor="correctAnswer" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Correct Answer
           </label>
           <select
@@ -168,7 +168,7 @@ export default function QuestionForm({ onQuestionCreated }: QuestionFormProps) {
             value={formData.correctAnswer}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 dark:bg-gray-700 dark:text-white transition-colors"
           >
             <option value="">Select correct answer</option>
             <option value="A">A</option>
@@ -179,7 +179,7 @@ export default function QuestionForm({ onQuestionCreated }: QuestionFormProps) {
         </div>
 
         <div>
-          <label htmlFor="difficulty" className="block text-sm font-medium text-black dark:text-white mb-1">
+          <label htmlFor="difficulty" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Difficulty
           </label>
           <select
@@ -188,7 +188,7 @@ export default function QuestionForm({ onQuestionCreated }: QuestionFormProps) {
             value={formData.difficulty}
             onChange={handleChange}
             required
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 dark:bg-gray-700 dark:text-white transition-colors"
           >
             <option value="">Select difficulty</option>
             <option value="Easy">Easy</option>
@@ -199,7 +199,7 @@ export default function QuestionForm({ onQuestionCreated }: QuestionFormProps) {
       </div>
 
       <div>
-        <label htmlFor="themes" className="block text-sm font-medium text-black dark:text-white mb-1">
+        <label htmlFor="themes" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
           Themes (comma-separated)
         </label>
         <input
@@ -208,7 +208,7 @@ export default function QuestionForm({ onQuestionCreated }: QuestionFormProps) {
           name="themes"
           value={formData.themes}
           onChange={handleChange}
-          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+          className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 dark:bg-gray-700 dark:text-white transition-colors"
           placeholder="e.g., Math, Algebra, Geometry"
         />
       </div>
@@ -216,7 +216,7 @@ export default function QuestionForm({ onQuestionCreated }: QuestionFormProps) {
       <button
         type="submit"
         disabled={submitting}
-        className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors"
+        className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 disabled:bg-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors shadow-sm"
       >
         {submitting ? 'Creating...' : 'Create Question'}
       </button>

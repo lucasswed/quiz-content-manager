@@ -64,10 +64,10 @@ export default function EditModal({ question, onClose, onUpdate }: EditModalProp
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <div className="bg-white dark:bg-gray-800 rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="sticky top-0 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4 flex justify-between items-center">
-          <h2 className="text-2xl font-semibold text-black dark:text-white">Edit Question</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">Edit Question</h2>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 text-2xl"
+            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 text-2xl transition-colors"
           >
             &times;
           </button>
@@ -75,7 +75,7 @@ export default function EditModal({ question, onClose, onUpdate }: EditModalProp
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div>
-            <label htmlFor="edit-question" className="block text-sm font-medium text-black dark:text-white mb-1">
+            <label htmlFor="edit-question" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Question
             </label>
             <textarea
@@ -85,13 +85,13 @@ export default function EditModal({ question, onClose, onUpdate }: EditModalProp
               onChange={handleChange}
               required
               rows={3}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 dark:bg-gray-700 dark:text-white transition-colors"
             />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="edit-optionA" className="block text-sm font-medium text-black dark:text-white mb-1">
+              <label htmlFor="edit-optionA" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Option A
               </label>
               <input
@@ -101,12 +101,12 @@ export default function EditModal({ question, onClose, onUpdate }: EditModalProp
                 value={formData.optionA}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 dark:bg-gray-700 dark:text-white transition-colors"
               />
             </div>
 
             <div>
-              <label htmlFor="edit-optionB" className="block text-sm font-medium text-black dark:text-white mb-1">
+              <label htmlFor="edit-optionB" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Option B
               </label>
               <input
@@ -116,12 +116,12 @@ export default function EditModal({ question, onClose, onUpdate }: EditModalProp
                 value={formData.optionB}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 dark:bg-gray-700 dark:text-white transition-colors"
               />
             </div>
 
             <div>
-              <label htmlFor="edit-optionC" className="block text-sm font-medium text-black dark:text-white mb-1">
+              <label htmlFor="edit-optionC" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Option C
               </label>
               <input
@@ -131,12 +131,12 @@ export default function EditModal({ question, onClose, onUpdate }: EditModalProp
                 value={formData.optionC}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 dark:bg-gray-700 dark:text-white transition-colors"
               />
             </div>
 
             <div>
-              <label htmlFor="edit-optionD" className="block text-sm font-medium text-black dark:text-white mb-1">
+              <label htmlFor="edit-optionD" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Option D
               </label>
               <input
@@ -146,14 +146,14 @@ export default function EditModal({ question, onClose, onUpdate }: EditModalProp
                 value={formData.optionD}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 dark:bg-gray-700 dark:text-white transition-colors"
               />
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label htmlFor="edit-correctAnswer" className="block text-sm font-medium text-black dark:text-white mb-1">
+              <label htmlFor="edit-correctAnswer" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Correct Answer
               </label>
               <select
@@ -162,7 +162,7 @@ export default function EditModal({ question, onClose, onUpdate }: EditModalProp
                 value={formData.correctAnswer}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 dark:bg-gray-700 dark:text-white transition-colors"
               >
                 <option value="">Select correct answer</option>
                 <option value="A">A</option>
@@ -173,7 +173,7 @@ export default function EditModal({ question, onClose, onUpdate }: EditModalProp
             </div>
 
             <div>
-              <label htmlFor="edit-difficulty" className="block text-sm font-medium text-black dark:text-white mb-1">
+              <label htmlFor="edit-difficulty" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Difficulty
               </label>
               <select
@@ -182,7 +182,7 @@ export default function EditModal({ question, onClose, onUpdate }: EditModalProp
                 value={formData.difficulty}
                 onChange={handleChange}
                 required
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 dark:bg-gray-700 dark:text-white transition-colors"
               >
                 <option value="">Select difficulty</option>
                 <option value="Easy">Easy</option>
@@ -193,7 +193,7 @@ export default function EditModal({ question, onClose, onUpdate }: EditModalProp
           </div>
 
           <div>
-            <label htmlFor="edit-themes" className="block text-sm font-medium text-black dark:text-white mb-1">
+            <label htmlFor="edit-themes" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
               Themes (comma-separated)
             </label>
             <input
@@ -202,7 +202,7 @@ export default function EditModal({ question, onClose, onUpdate }: EditModalProp
               name="themes"
               value={formData.themes}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 dark:bg-gray-700 dark:text-white transition-colors"
             />
           </div>
 
@@ -210,14 +210,14 @@ export default function EditModal({ question, onClose, onUpdate }: EditModalProp
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-black dark:text-white hover:bg-gray-50 dark:hover:bg-gray-700"
+              className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitting}
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
+              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 disabled:bg-gray-400 dark:disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors shadow-sm"
             >
               {submitting ? 'Updating...' : 'Update Question'}
             </button>
