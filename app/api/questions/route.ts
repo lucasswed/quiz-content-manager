@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
     let limit: number | undefined;
     if (limitParam) {
       const parsedLimit = parseInt(limitParam, 10);
-      if (!isNaN(parsedLimit) && parsedLimit > 0) {
+      if (!isNaN(parsedLimit) && parsedLimit > 0 && parsedLimit <= 1000) {
         limit = parsedLimit;
       }
     }
