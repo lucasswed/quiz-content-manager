@@ -95,15 +95,15 @@ export default function QuestionManager() {
 
   return (
     <div className="space-y-8">
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">Add New Question</h2>
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transition-colors border border-gray-200 dark:border-gray-700">
+        <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Add New Question</h2>
         <QuestionForm onQuestionCreated={handleQuestionCreated} />
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-semibold mb-4 text-black dark:text-white">Questions</h2>
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 transition-colors border border-gray-200 dark:border-gray-700">
+        <h2 className="text-2xl font-semibold mb-4 text-gray-900 dark:text-white">Questions</h2>
         {loading ? (
-          <p className="text-black dark:text-white">Loading questions...</p>
+          <p className="text-gray-700 dark:text-gray-300">Loading questions...</p>
         ) : (
           <QuestionTable
             questions={questions}
