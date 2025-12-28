@@ -12,7 +12,7 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="fixed top-4 left-4 z-50">
+    <nav aria-label="Main navigation" className="fixed top-4 left-4 z-50">
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
         <div className="flex">
           {navItems.map((item) => {
