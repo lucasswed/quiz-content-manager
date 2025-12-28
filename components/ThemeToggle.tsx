@@ -9,12 +9,19 @@ export default function ThemeToggle() {
   // Initialize theme on mount
   useEffect(() => {
     const initializeTheme = () => {
-      const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-      const initialTheme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      
-      document.documentElement.classList.toggle('dark', initialTheme === 'dark');
-      setTheme(initialTheme);
-      setMounted(true);
+      try {
+        const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
+        const initialTheme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        
+        document.documentElement.classList.toggle('dark', initialTheme === 'dark');
+        setTheme(initialTheme);
+        setMounted(true);
+      } catch {
+        // Fallback if localStorage is not available
+        console.warn('localStorage not available, using light theme as default');
+        setTheme('light');
+        setMounted(true);
+      }
     };
 
     initializeTheme();
@@ -23,13 +30,17 @@ export default function ThemeToggle() {
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
+    try {
+      localStorage.setItem('theme', newTheme);
+    } catch {
+      console.warn('Failed to save theme preference to localStorage');
+    }
     document.documentElement.classList.toggle('dark', newTheme === 'dark');
   };
 
   // Prevent hydration mismatch by not rendering until mounted
   if (!mounted) {
-    return <div className="fixed top-4 right-4 w-10 h-10"></div>;
+    return <div className="fixed top-4 right-4 w-10 h-10" aria-hidden="true"></div>;
   }
 
   return (
