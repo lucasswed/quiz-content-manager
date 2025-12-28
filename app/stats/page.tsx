@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Question } from '@/components/QuestionManager';
 import Link from 'next/link';
 
@@ -20,19 +20,28 @@ export default function StatsPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [questionsRes, statsRes] = await Promise.all([
-          fetch('/api/questions'),
-          fetch('/api/questions/stats'),
-        ]);
+        const questionsRes = await fetch('/api/questions');
 
         if (questionsRes.ok) {
           const questionsData = await questionsRes.json();
           setQuestions(questionsData);
-        }
+          
+          // Calculate stats from questions data
+          const themeStats: Record<string, number> = {};
+          const difficultyStats: Record<string, number> = {};
 
-        if (statsRes.ok) {
-          const statsData = await statsRes.json();
-          setStats(statsData);
+          questionsData.forEach((question: Question) => {
+            question.themes.forEach((theme) => {
+              themeStats[theme] = (themeStats[theme] || 0) + 1;
+            });
+            difficultyStats[question.difficulty] = (difficultyStats[question.difficulty] || 0) + 1;
+          });
+
+          setStats({
+            total: questionsData.length,
+            byTheme: themeStats,
+            byDifficulty: difficultyStats,
+          });
         }
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -44,11 +53,13 @@ export default function StatsPage() {
     fetchData();
   }, []);
 
-  const filteredQuestions = questions.filter((q) => {
-    const matchesTheme = !filterTheme || q.themes.includes(filterTheme);
-    const matchesDifficulty = !filterDifficulty || q.difficulty === filterDifficulty;
-    return matchesTheme && matchesDifficulty;
-  });
+  const filteredQuestions = useMemo(() => {
+    return questions.filter((q) => {
+      const matchesTheme = !filterTheme || q.themes.includes(filterTheme);
+      const matchesDifficulty = !filterDifficulty || q.difficulty === filterDifficulty;
+      return matchesTheme && matchesDifficulty;
+    });
+  }, [questions, filterTheme, filterDifficulty]);
 
   const availableThemes = Array.from(
     new Set(questions.flatMap((q) => q.themes))

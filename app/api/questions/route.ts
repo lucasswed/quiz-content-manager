@@ -4,13 +4,21 @@ import { prisma } from '@/lib/prisma';
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    const limit = searchParams.get('limit');
+    const limitParam = searchParams.get('limit');
+    
+    let limit: number | undefined;
+    if (limitParam) {
+      const parsedLimit = parseInt(limitParam, 10);
+      if (!isNaN(parsedLimit) && parsedLimit > 0) {
+        limit = parsedLimit;
+      }
+    }
     
     const questions = await prisma.question.findMany({
       orderBy: {
         createdAt: 'desc'
       },
-      ...(limit && { take: parseInt(limit) })
+      ...(limit && { take: limit })
     });
     return NextResponse.json(questions);
   } catch (error) {
