@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@theme {
+  --color-*: initial;
+  --color-background: #ffffff;
+  --color-foreground: #000000;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #000000;
@@ -9,6 +15,8 @@
   --background: #0a0a0a;
   --foreground: #ffffff;
 }
+
+@variant dark (&:where(.dark, .dark *));
 
 body {
   background: var(--background);

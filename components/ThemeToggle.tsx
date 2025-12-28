@@ -29,7 +29,7 @@ export default function ThemeToggle() {
 
   // Prevent hydration mismatch by not rendering until mounted
   if (!mounted) {
-    return <div className="w-12 h-6"></div>;
+    return <div className="fixed top-4 right-4 w-10 h-10"></div>;
   }
 
   return (
