@@ -1,12 +1,26 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
-export async function GET() {
+const MAX_LIMIT = 1000;
+
+export async function GET(request: NextRequest) {
   try {
+    const searchParams = request.nextUrl.searchParams;
+    const limitParam = searchParams.get('limit');
+    
+    let limit: number | undefined;
+    if (limitParam) {
+      const parsedLimit = parseInt(limitParam, 10);
+      if (!isNaN(parsedLimit) && parsedLimit > 0 && parsedLimit <= MAX_LIMIT) {
+        limit = parsedLimit;
+      }
+    }
+    
     const questions = await prisma.question.findMany({
       orderBy: {
         createdAt: 'desc'
-      }
+      },
+      ...(limit && { take: limit })
     });
     return NextResponse.json(questions);
   } catch (error) {
